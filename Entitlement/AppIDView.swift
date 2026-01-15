@@ -18,7 +18,7 @@ struct AppIDEditView : View {
                 Button {
                     Task { await addIncreasedMemoryLimit() }
                 } label: {
-                    Text("Add Increased Memory Limit")
+                    Text("បន្ថែមការបង្កើនដែនកំណត់អង្គចងចាំ")
                 }
             }
             
@@ -46,10 +46,8 @@ struct AppIDEditView : View {
             errorInfo = error.localizedDescription
             errorShow = true
         }
-
     }
 }
-
 
 struct AppIDView : View {
     @StateObject var viewModel : AppIDViewModel
@@ -78,7 +76,7 @@ struct AppIDView : View {
                     }
                 }
             }
-            .alert("កំហុស"ហុសr", isPresented: $errorShow){
+            .alert("កំហុស", isPresented: $errorShow){
                 Button("យល់ព្រម".loc, action: {
                 })
             } message: {
