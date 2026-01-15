@@ -26,11 +26,11 @@ struct AppIDEditView : View {
                 Text(viewModel.result)
                     .font(.system(.subheadline, design: .monospaced))
             } header: {
-                Text("Server Response")
+                Text("ការឆ្លើយតបពីម៉ាស៊ីនមេ")
             }
         }
-        .alert("Error", isPresented: $errorShow){
-            Button("OK".loc, action: {
+        .alert("កំហុស", isPresented: $errorShow){
+            Button("យល់ព្រម".loc, action: {
             })
         } message: {
             Text(errorInfo)
@@ -69,17 +69,17 @@ struct AppIDView : View {
                         }
                     }
                 } header: {
-                    Text("App IDs")
+                    Text("លេខសម្គាល់កម្មវិធី")
                 }
                 
                 Section {
-                    Button("Refresh") {
+                    Button("ទាញយកថ្មី") {
                         Task { await refreshButtonClicked() }
                     }
                 }
             }
-            .alert("Error", isPresented: $errorShow){
-                Button("OK".loc, action: {
+            .alert("កំហុស"ហុសr", isPresented: $errorShow){
+                Button("យល់ព្រម".loc, action: {
                 })
             } message: {
                 Text(errorInfo)

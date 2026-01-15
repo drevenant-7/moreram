@@ -25,27 +25,27 @@ struct SettingsView: View {
             Section {
                 if sharedModel.isLogin {
                     HStack {
-                        Text("Email")
+                        Text("អ៊ីមែល")
                         Spacer()
                         Text(email)
                     }
                     HStack {
-                        Text("Team ID")
+                        Text("លេខសម្គាល់ក្រុម")
                         Spacer()
                         Text(teamId)
                     }
                 } else {
-                    Button("Sign in") {
+                    Button("ចូលប្រើ") {
                         viewModel.loginModalShow = true
                     }
                 }
             } header: {
-                Text("Account")
+                Text("គណនី")
             }
             
             Section {
                 HStack {
-                    Text("Anisette Server URL")
+                    Text("អាសយដ្ឋានម៉ាស៊ីនមេ Anisette")
                     Spacer()
                     TextField("", text: $sharedModel.anisetteServerURL)
                         .multilineTextAlignment(.trailing)
@@ -53,15 +53,15 @@ struct SettingsView: View {
             }
             
             Section {
-                Button("Clean Up Keychain") {
+                Button("សម្អាត Keychain") {
                     cleanUp()
                 }
             } footer: {
-                Text("If something went wrong during signing in, please try to clean up the keychain, repoen the app and try again.")
+                Text("ប្រសិនបើមានបញ្ហាកើតឡើងក្នុងពេលចូលប្រើ សូមព្យាយាមសម្អាត keychain រួចបើកកម្មវិធីឡើងវិញ។")
             }
         }
-        .alert("Error", isPresented: $errorShow){
-            Button("OK".loc, action: {
+        alert("alert("កំហុស"ហុស", isPresented: $errorShow){
+            Button("យល់ព្រម".loc, action: {
             })
         } message: {
             Text(errorInfo)
