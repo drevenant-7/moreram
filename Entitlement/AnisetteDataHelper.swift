@@ -141,7 +141,7 @@ final class AnisetteDataHelper: WebSocketDelegate
             self.printOut("Getting provisioning URLs")
             var request = self.buildAppleRequest(url: URL(string: "https://gsa.apple.com/grandslam/GsService2/lookup")!)
             request.httpMethod = "GET"
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await URLSession.shared.data(for: request)
         if
            let plist = try? PropertyListSerialization.propertyList(from: data, format: nil) as? Dictionary<String, Dictionary<String, Any>>,
            let startProvisioningString = plist["urls"]?["midStartProvisioning"] as? String,
@@ -321,7 +321,7 @@ final class AnisetteDataHelper: WebSocketDelegate
         self.printOut("Trying to get client_info")
         let clientInfoURL = self.url!.appendingPathComponent("v3").appendingPathComponent("client_info")
         
-        let (data, response) = try await URLSession.shared.data(from: clientInfoURL)
+        let (data, _) = try await URLSession.shared.data(from: clientInfoURL)
         
 
             do {
@@ -365,7 +365,7 @@ final class AnisetteDataHelper: WebSocketDelegate
     func fetchAnisetteV3(_ identifier: String, _ adiPb: String) async throws -> AnisetteData {
         try await fetchClientInfo()
         self.printOut("Fetching anisette V3")
-        let url = menuAnisetteURL
+         _ = menuAnisetteURL (or just delete that line entirely).
         var request = URLRequest(url: self.url!.appendingPathComponent("v3").appendingPathComponent("get_headers"))
         request.httpMethod = "POST"
         request.httpBody = try! JSONSerialization.data(withJSONObject: [
